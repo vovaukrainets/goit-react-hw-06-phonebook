@@ -1,62 +1,85 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Formik } from 'formik';
-import {
-  InputStyled,
-  DataForm,
-  InputWrapper,
-} from 'components/Form/Form.styled';
-// import * as yup from 'yup';
-import { nanoid } from 'nanoid';
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import { Formik } from 'formik';
+// import {
+//   InputStyled,
+//   DataForm,
+//   InputWrapper,
+// } from 'components/Form/Form.styled';
+// // import * as yup from 'yup';
+// import { nanoid } from 'nanoid';
 
-export const ContactsForm = ({ setNewContact }) => {
-  const onFormSubmit = (values, { resetForm }) => {
-    const newContact = {
-      id: nanoid(),
-      name: values.name,
-      number: values.number,
-    };
+// export const ContactsForm = ({ setNewContact }) => {
+//   const onFormSubmit = (values, { resetForm }) => {
+//     const newContact = {
+//       id: nanoid(),
+//       name: values.name,
+//       number: values.number,
+//     };
 
-    setNewContact(newContact);
+//     setNewContact(newContact);
 
-    resetForm();
+//     resetForm();
+//   };
+
+//   return (
+//     <>
+//       <Formik initialValues={{ name: '', number: '' }} onSubmit={onFormSubmit}>
+//         <DataForm name="myFirstReactForm">
+//           <InputWrapper htmlFor="name">
+//             Name
+//             <InputStyled
+//               type="text"
+//               name="name"
+//               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+//               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+//               required
+//             />
+//           </InputWrapper>
+
+//           <InputWrapper htmlFor="number">
+//             Tel
+//             <InputStyled
+//               type="tel"
+//               name="number"
+//               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+//               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+//               required
+//             />
+//           </InputWrapper>
+
+//           <button type="submit" name="btn">
+//             Add contact
+//           </button>
+//         </DataForm>
+//       </Formik>
+//     </>
+//   );
+// };
+
+// ContactsForm.propTypes = {
+//   setNewContact: PropTypes.func.isRequired,
+// };
+
+import css from './Form.module.css';
+
+export const Form = () => {
+  const handleSubmit = event => {
+    event.preventDefault();
+    const form = event.target;
+    form.reset();
   };
 
   return (
-    <>
-      <Formik initialValues={{ name: '', number: '' }} onSubmit={onFormSubmit}>
-        <DataForm name="myFirstReactForm">
-          <InputWrapper htmlFor="name">
-            Name
-            <InputStyled
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </InputWrapper>
-
-          <InputWrapper htmlFor="number">
-            Tel
-            <InputStyled
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </InputWrapper>
-
-          <button type="submit" name="btn">
-            Add contact
-          </button>
-        </DataForm>
-      </Formik>
-    </>
+    <div>
+      <h1>Phonebook</h1>
+      <form className={css.form} onSubmit={handleSubmit}>
+        Name
+        <input className={css.field} type="text" name="text" />
+        Tel
+        <input className={css.field} type="text" name="text" />
+        <button type="submit">Add contact</button>
+      </form>
+    </div>
   );
-};
-
-ContactsForm.propTypes = {
-  setNewContact: PropTypes.func.isRequired,
 };
