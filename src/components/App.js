@@ -53,15 +53,28 @@
 //     </>
 //   );
 // };
-import { Layout } from 'components/Loyout/Loyout';
-import { Form } from 'components/Form/Form';
-// import { TaskList } from 'components/TaskList/TaskList';
+
+import React from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/stor';
+import { ContactsForm } from './Form/Form';
+import { ContactsList } from './ContactsList/ContactsList';
+import { SearchingFilter } from './SearchingFilter/SearchingFilter';
 
 export const App = () => {
   return (
-    <Layout>
-      <Form />
-      {/* <TaskList /> */}
-    </Layout>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <>
+          <h1>Phonebook</h1>
+          <ContactsForm />
+
+          <h1>Contacts</h1>
+          <SearchingFilter />
+          <ContactsList />
+        </>
+      </PersistGate>
+    </Provider>
   );
 };
