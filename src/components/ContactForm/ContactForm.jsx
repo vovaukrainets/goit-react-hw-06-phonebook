@@ -1,9 +1,8 @@
-import React from 'react';
 import { useState } from 'react';
-import { Form, FormLabel } from './Form.styled';
+import { Form, FormLabel } from './ContactForm.styled';
 import { Button } from 'components/Commons/Button.styled';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 import { addContact } from '../redux/contacts/contactsSlice';
 
 export const ContactForm = () => {
@@ -12,8 +11,8 @@ export const ContactForm = () => {
   const { contacts } = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
-  const handleChange = ev => {
-    const { name, value } = EvalError.target;
+  const handleChange = e => {
+    const { name, value } = e.target;
     switch (name) {
       case 'name':
         setName(value);

@@ -1,14 +1,13 @@
-import { FilterLabel } from './SearchingFilter.styled';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../redux/filter/filterSlice';
+import { FilterLabel } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const SearchingFilter = () => {
+export const Filter = () => {
   const { filter } = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  const handleSetFilter = event => {
-    const value = event.target.value;
+  const handleSetFilter = e => {
+    const value = e.target.value;
     dispatch(setFilter(value));
   };
 

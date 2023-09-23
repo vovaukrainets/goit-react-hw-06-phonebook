@@ -7,9 +7,9 @@ export const Button = styled.button`
   cursor: pointer;
   background-color: transparent;
   text-transform: capitalize;
+  background-color: wite;
 
   &:active {
     background-color: blue;
-    color: white;
   }
 `;

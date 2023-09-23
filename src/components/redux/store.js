@@ -9,7 +9,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 import storage from 'redux-persist/lib/storage';
+
 import { reducer } from './reducer';
 
 const persistConfig = {
